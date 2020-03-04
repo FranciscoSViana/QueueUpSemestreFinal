@@ -4,25 +4,27 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.queueup.queueup.dao.UsuarioRepository;
+import com.queueup.queueup.model.Usuario;
+
 
 @RestController
-public class LoginController {	
-    @PostMapping("/login")
-	public ResponseEntity<String> validarLogin(@RequestBody Credenciais credenciais, HttpSession session) {
-    	// Faz select no banco puxando o login e senha
-		if (credenciais.getLogin().equals(credenciais.getSenha())) {
-			session.setAttribute("usuario", credenciais.getLogin());
-			return ResponseEntity.ok("Sucesso");
-			
-		}
-		else{
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-			         .body("Erro");
-		}
+public class LoginController {
+	
+	private UsuarioRepository usuarioRepository;
+   
+	@CrossOrigin
+	@PostMapping("/login")
+	public ResponseEntity<String> efetuarLogin(@RequestBody Credenciais credenciais) {
+		Usuario user = usuarioRepository.loginUsuario(credenciais);
+		return user == null ? ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login/senha não conferem")
+				: ResponseEntity.ok("Certo");
+
 	}
     
     public ResponseEntity<String> deslogar(HttpSession session) {

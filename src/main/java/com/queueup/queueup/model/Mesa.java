@@ -40,5 +40,9 @@ public class Mesa {
 	public boolean isStatus_() {
 		return status_;
 	}
+	
+	public UUID getidMesa() {
+		return idMesa;
+	}
 
 }

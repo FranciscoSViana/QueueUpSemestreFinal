@@ -24,28 +24,25 @@ public class Restaurante {
 	@Embedded
 	private Endereco endereco;
 	private String telefoneRestaurante;
-	@Embedded
 	private Credenciais credenciais;
 	private String tipo;
-	private String email;
 	private LocalTime time;
-	//private Mesa[] mesa;
+	private Mesa[] mesa;
 	@JoinColumn //depois a gente ve isso
 	private int idAvaliacao;
 
 	public Restaurante() {}
 
 	public Restaurante(String nome, String cnpj, Endereco endereco, String telefoneRestaurante, Credenciais credenciais,
-			String tipo, String email, LocalTime time, Mesa[] mesa) {
+			String tipo, LocalTime time, Mesa[] mesa) {
 		this.nome = nome;
 		this.cnpj = cnpj;
 		this.endereco = endereco;
 		this.telefoneRestaurante = telefoneRestaurante;
 		this.credenciais = credenciais;
 		this.tipo = tipo;
-		this.email = email;
 		this.time = time;
-	//	this.mesa = mesa;
+		this.mesa = mesa;
 	}
 
 	// Getters and Setters
@@ -58,13 +55,13 @@ public class Restaurante {
 		this.endereco = endereco;
 	}
 
-	/*public Mesa[] getMesa() {
+	public Mesa[] getMesa() {
 		return mesa;
 	}
 
 	public void setMesa(Mesa[] mesa) {
 		this.mesa = mesa;
-	}*/
+	}
 
 	public String getNome() {
 		return nome;
@@ -96,14 +93,6 @@ public class Restaurante {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
-	}
-	
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public LocalTime getTime() {//funcionamento do estabelecimento

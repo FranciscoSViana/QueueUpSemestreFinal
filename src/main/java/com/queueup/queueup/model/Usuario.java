@@ -17,35 +17,35 @@ public class Usuario {
 	@Id
 	@GeneratedValue
 	private UUID idCliente;
-
+	
 	private String nome;
-
+	
 	private String email;
-
+	
 	@Embedded
 	private Credenciais credenciais;
 
 	private Integer telefone;
-
+	
 	private String cpf;
-
+	
 	private int idade;
-
+	
 	@Embedded
-	private Sexo genero;
+	 private Sexo genero;
 
 	public Usuario() {
 	}
 
-	public Usuario(String nome, String email, Credenciais credenciais, Integer telefone, String cpf, int idade,
-			Sexo genero) {
+	public Usuario(String nome, String email, Credenciais credenciais, Integer telefone, String cpf,
+			int idade , Sexo genero ) {
 		this.nome = nome;
 		this.email = email;
 		this.credenciais = credenciais;
 		this.telefone = telefone;
 		this.cpf = cpf;
 		this.idade = idade;
-		this.genero = genero;
+		 this.genero = genero;
 	}
 
 	public String getEmail() {
@@ -88,13 +88,11 @@ public class Usuario {
 		this.idade = idade;
 	}
 
-	public Sexo getGenero() {
-		return genero;
-	}
-
-	public void setGenero(Sexo genero) {
-		this.genero = genero;
-	}
+	
+	  public Sexo getGenero() { return genero; }
+	  
+	  public void setGenero(Sexo genero) { this.genero = genero; }
+	 
 
 	public void setCredenciais(Credenciais credenciais) {
 		this.credenciais = credenciais;

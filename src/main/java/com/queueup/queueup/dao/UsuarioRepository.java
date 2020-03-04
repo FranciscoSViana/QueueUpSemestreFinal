@@ -11,10 +11,10 @@ import com.queueup.queueup.controller.Credenciais;
 import com.queueup.queueup.model.Usuario;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, UUID> {
-
-	@Query("select u from Usuario u where u.credenciais = :credenciais")
-	public Usuario loginUsuario(@Param("credenciais") Credenciais credenciais);
-
+public interface UsuarioRepository extends JpaRepository<Usuario, UUID>{
+	
+	@Query("from Usuario where credenciais=:credenciais")
+	public Usuario loginUsuario(@Param("credenciais")Credenciais credenciais);
+	
 	public Usuario findByNome(String nome);
 }

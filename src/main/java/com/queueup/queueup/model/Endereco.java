@@ -17,8 +17,6 @@ public class Endereco {
 		this.numEndereco = numEndereco;
 		this.cep = cep;
 	}
-	
-	public Endereco() {}
 
 	public String getCidade() {
 		return cidade;

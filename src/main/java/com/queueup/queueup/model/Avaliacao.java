@@ -2,7 +2,6 @@ package com.queueup.queueup.model;
 
 import java.util.UUID;
 
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,7 +10,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="tb_avaliacao")
-@Embeddable
 public class Avaliacao {
 	@Id
 	@GeneratedValue
