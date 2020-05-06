@@ -12,9 +12,7 @@ import com.queueup.queueup.model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, UUID> {
 
-	@Query("from Usuario where usuario=:usuario")
-	public Usuario loginUsuario(@Param("usuario") Usuario usuarios);
-
-	public Usuario findByNome(String nome);
+	@Query("select u from Usuario u where u.cpf = :cpf and u.senha = :senha")
+	public Usuario loginUsuario(@Param("cpf") String cpf, @Param("senha") String senha);
 
 }
