@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tb_avaliacao")
+@Table(name = "tb_avaliacao")
 public class Avaliacao {
 	@Id
 	@GeneratedValue
@@ -17,10 +17,13 @@ public class Avaliacao {
 	private String nomeRestaurante;
 	private String nomeCliente;
 	private byte avaliacao;
-	@JoinColumn //depois vê
+	@JoinColumn // depois vê
 	private int idCliente;
-	
-	public Avaliacao() {}
+	@JoinColumn
+	private int idRestaurante;
+
+	public Avaliacao() {
+	}
 
 	public String getNomeRestaurante() {
 		return nomeRestaurante;
@@ -45,7 +48,5 @@ public class Avaliacao {
 	public void setAvaliacao(byte avaliacao) {
 		this.avaliacao = avaliacao;
 	}
-	
-	
-	
+
 }

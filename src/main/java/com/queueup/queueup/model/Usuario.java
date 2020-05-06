@@ -17,85 +17,54 @@ public class Usuario {
 	@Id
 	@GeneratedValue
 	private UUID idCliente;
-	
-	private String nome;
-	
-	private String email;
-	
-	@Embedded
-	private Credenciais credenciais;
 
-	private Integer telefone;
-	
+	private String nome;
+
 	private String cpf;
-	
-	private int idade;
-	
-	@Embedded
-	 private Sexo genero;
+
+	private String senha;
 
 	public Usuario() {
 	}
 
-	public Usuario(String nome, String email, Credenciais credenciais, Integer telefone, String cpf,
-			int idade , Sexo genero ) {
+	public Usuario(UUID idCliente, String nome, String cpf, String senha) {
+		super();
+		this.idCliente = idCliente;
 		this.nome = nome;
-		this.email = email;
-		this.credenciais = credenciais;
-		this.telefone = telefone;
 		this.cpf = cpf;
-		this.idade = idade;
-		 this.genero = genero;
+		this.senha = senha;
 	}
 
-	public String getEmail() {
-		return email;
+	public UUID getIdCliente() {
+		return idCliente;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Integer getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(Integer telefone) {
-		this.telefone = telefone;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setIdCliente(UUID idCliente) {
+		this.idCliente = idCliente;
 	}
 
 	public String getNome() {
 		return nome;
 	}
 
-	public Credenciais getCredenciais() {
-		return credenciais;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getCpf() {
 		return cpf;
 	}
 
-	public int getIdade() {
-		return idade;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
-	public void setIdade(int idade) {
-		this.idade = idade;
+	public String getSenha() {
+		return senha;
 	}
 
-	
-	  public Sexo getGenero() { return genero; }
-	  
-	  public void setGenero(Sexo genero) { this.genero = genero; }
-	 
-
-	public void setCredenciais(Credenciais credenciais) {
-		this.credenciais = credenciais;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public void fazerReserva() {

@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.queueup.queueup.dao.RestauranteRepository;
 import com.queueup.queueup.dao.UsuarioRepository;
+import com.queueup.queueup.model.Restaurante;
 import com.queueup.queueup.model.Usuario;
 
 
@@ -20,14 +22,31 @@ public class LoginController {
    
 	@CrossOrigin
 	@PostMapping("/login")
-	public ResponseEntity<String> efetuarLogin(@RequestBody Credenciais credenciais) {
-		Usuario user = usuarioRepository.loginUsuario(credenciais);
+	public ResponseEntity<String> efetuarLogin(@RequestBody Usuario usuarios) {
+		Usuario user = usuarioRepository.loginUsuario(usuarios);
+		return user == null ? ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login/senha não conferem")
+				: ResponseEntity.ok("Certo");
+
+	}
+	
+	private RestauranteRepository restauranteRepository;
+    
+    public ResponseEntity<String> deslogar(HttpSession session) {
+    	session.invalidate();
+    	return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+		         .body("Erro"); 
+    }
+    
+    @CrossOrigin
+	@PostMapping("/login/restaurante")
+	public ResponseEntity<String> efetuarLogin(@RequestBody Restaurante restaurantes) {
+		Restaurante user = restauranteRepository.loginRestaurante(restaurantes);
 		return user == null ? ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login/senha não conferem")
 				: ResponseEntity.ok("Certo");
 
 	}
     
-    public ResponseEntity<String> deslogar(HttpSession session) {
+    public ResponseEntity<String> deslogarRestaurante(HttpSession session) {
     	session.invalidate();
     	return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
 		         .body("Erro"); 

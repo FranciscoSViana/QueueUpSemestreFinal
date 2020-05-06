@@ -13,39 +13,62 @@ import javax.persistence.Table;
 import com.queueup.queueup.controller.Credenciais;
 
 @Entity
-@Table(name="tb_restaurante")
+@Table(name = "tb_restaurante")
 public class Restaurante {
 
 	@Id
 	@GeneratedValue
-	private UUID id;
+	private UUID idRestaurante;
 	private String nome;
 	private String cnpj;
 	@Embedded
 	private Endereco endereco;
 	private String telefoneRestaurante;
-	private Credenciais credenciais;
+	private String senha;
 	private String tipo;
-	private LocalTime time;
-	private Mesa[] mesa;
-	@JoinColumn //depois a gente ve isso
-	private int idAvaliacao;
+	private Mesa[] capacidade;
+	// @JoinColumn // depois a gente ve isso
+	// private int idAvaliacao;
 
-	public Restaurante() {}
+	public Restaurante() {
+	}
 
-	public Restaurante(String nome, String cnpj, Endereco endereco, String telefoneRestaurante, Credenciais credenciais,
-			String tipo, LocalTime time, Mesa[] mesa) {
+	public Restaurante(UUID idRestaurante, String nome, String cnpj, Endereco endereco, String telefoneRestaurante,
+			String senha, String tipo, Mesa[] capacidade) {
+		super();
+		this.idRestaurante = idRestaurante;
 		this.nome = nome;
 		this.cnpj = cnpj;
 		this.endereco = endereco;
 		this.telefoneRestaurante = telefoneRestaurante;
-		this.credenciais = credenciais;
+		this.senha = senha;
 		this.tipo = tipo;
-		this.time = time;
-		this.mesa = mesa;
+		this.capacidade = capacidade;
 	}
 
-	// Getters and Setters
+	public UUID getIdRestaurante() {
+		return idRestaurante;
+	}
+
+	public void setIdRestaurante(UUID idRestaurante) {
+		this.idRestaurante = idRestaurante;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
 
 	public Endereco getEndereco() {
 		return endereco;
@@ -53,22 +76,6 @@ public class Restaurante {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
-	}
-
-	public Mesa[] getMesa() {
-		return mesa;
-	}
-
-	public void setMesa(Mesa[] mesa) {
-		this.mesa = mesa;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public String getCnpj() {
-		return cnpj;
 	}
 
 	public String getTelefoneRestaurante() {
@@ -79,15 +86,15 @@ public class Restaurante {
 		this.telefoneRestaurante = telefoneRestaurante;
 	}
 
-	public Credenciais getCredenciais() {
-		return credenciais;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setCredenciais(Credenciais credenciais) {
-		this.credenciais = credenciais;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
-	public String getTipo() {//tipo de comida
+	public String getTipo() {
 		return tipo;
 	}
 
@@ -95,12 +102,12 @@ public class Restaurante {
 		this.tipo = tipo;
 	}
 
-	public LocalTime getTime() {//funcionamento do estabelecimento
-		return time;
+	public Mesa[] getCapacidade() {
+		return capacidade;
 	}
 
-	public void setTime(LocalTime time) {
-		this.time = time;
+	public void setCapacidade(Mesa[] capacidade) {
+		this.capacidade = capacidade;
 	}
 
 	// Métodos
