@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,11 +29,11 @@ public class LoginController {
 
 	@CrossOrigin
 	@PostMapping("/login")
-	public ResponseEntity<String> efetuarLogin(@RequestBody Usuario usuarios) {
+	public ResponseEntity<Usuario> efetuarLogin(@ModelAttribute Usuario usuarios) {
 		Usuario user = usuarioRepository.loginUsuario(usuarios.getCpf(),usuarios.getSenha());
 		System.out.println(user.getCpf());
-		return user == null ? ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login/senha não conferem")
-				: ResponseEntity.ok("Certo");
+		return user == null ? ResponseEntity.status(HttpStatus.UNAUTHORIZED).build()
+				: ResponseEntity.status(HttpStatus.OK).body(user);
 
 	}
 
@@ -45,11 +46,11 @@ public class LoginController {
 
 	@CrossOrigin
 	@PostMapping("/login/restaurante")
-	public ResponseEntity<String> efetuarLogin(@RequestBody Restaurante restaurantes) {
+	public ResponseEntity<Restaurante> efetuarLogin(@ModelAttribute Restaurante restaurantes) {
 		Restaurante user = restauranteRepository.loginRestaurante(restaurantes.getCnpj(),restaurantes.getSenha());
 		System.out.println(user.getCnpj());
-		return user == null ? ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login/senha não conferem")
-				: ResponseEntity.ok("Certo");
+		return user == null ? ResponseEntity.status(HttpStatus.UNAUTHORIZED).build()
+				: ResponseEntity.status(HttpStatus.OK).body(user);
 
 	}
 

@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -36,10 +37,10 @@ public class RestaurantesController {
 
 	@CrossOrigin
 	@PostMapping("/criar")
-	public ResponseEntity<String> cadastrarRestaurante(@RequestBody Restaurante restaurante) {
+	public ResponseEntity<Restaurante> cadastrarRestaurante(@RequestBody Restaurante restaurante) {
 		System.out.println("alo");
 		todosRestaurantes.save(restaurante);
-		return ResponseEntity.ok("Sucesso");
+		return ResponseEntity.status(HttpStatus.OK).body(restaurante);
 	}
 
 	@PutMapping("/{id}")

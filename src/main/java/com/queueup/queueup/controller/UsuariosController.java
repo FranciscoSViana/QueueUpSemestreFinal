@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -36,14 +37,14 @@ public class UsuariosController {
 
 	@CrossOrigin
 	@PostMapping("/criar")
-	public ResponseEntity<String> cadastrarUsuario(@RequestBody Usuario usuario) {
+	public ResponseEntity<Usuario> cadastrarUsuario(@ModelAttribute Usuario usuario) {
 		System.out.println("alo");
 		todosUsuarios.save(usuario);
-		return ResponseEntity.ok("Sucesso");
+		return ResponseEntity.status(HttpStatus.OK).body(usuario);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Usuario> updateUsuario(@PathVariable("id") UUID id, @RequestBody Usuario usuario) {
+	public ResponseEntity<Usuario> updateUsuario(@PathVariable("id") UUID id, @ModelAttribute Usuario usuario) {
 		System.out.println("Atualizando usuario do ID = " + id + "...");
 
 		Optional<Usuario> dadoUsuario = todosUsuarios.findById(id);

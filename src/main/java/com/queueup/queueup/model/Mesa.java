@@ -16,7 +16,7 @@ public class Mesa {
 	private UUID idMesa;
 	private int nMax;
 	private int nMin;
-	private boolean status_;
+	private boolean status;
 	private int idCliente;
 	private int idRestaurante;
 
@@ -26,7 +26,7 @@ public class Mesa {
 	public Mesa(int nMax, int nMin, boolean status_) {
 		this.nMax = nMax;
 		this.nMin = nMin;
-		this.status_ = false;
+		this.status = false;
 	}
 
 	public int getnMax() {
@@ -38,7 +38,7 @@ public class Mesa {
 	}
 
 	public boolean isStatus_() {
-		return status_;
+		return status;
 	}
 	
 	public UUID getidMesa() {
