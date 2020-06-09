@@ -30,7 +30,7 @@ public class Restaurante {
 	private String telefoneRestaurante;
 	private String senha;
 	private String tipo;
-	private Fila[] capacidade;
+	private Integer capacidade;
 	// @JoinColumn // depois a gente ve isso
 	// private int idAvaliacao;
 
