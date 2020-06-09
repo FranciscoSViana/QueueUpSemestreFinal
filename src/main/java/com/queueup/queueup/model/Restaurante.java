@@ -21,25 +21,35 @@ public class Restaurante {
 	private UUID idRestaurante;
 	private String nome;
 	private String cnpj;
-	@Embedded
-	private Endereco endereco;
+	private String cidade;
+	private String estado;
+	private String bairro;
+	private String logradouro;
+	private String numEndereco;
+	private String cep;
 	private String telefoneRestaurante;
 	private String senha;
 	private String tipo;
-	private Mesa[] capacidade;
+	private Fila[] capacidade;
 	// @JoinColumn // depois a gente ve isso
 	// private int idAvaliacao;
 
 	public Restaurante() {
 	}
 
-	public Restaurante(UUID idRestaurante, String nome, String cnpj, Endereco endereco, String telefoneRestaurante,
-			String senha, String tipo, Mesa[] capacidade) {
+	public Restaurante(UUID idRestaurante, String nome, String cnpj, String cidade, String estado, String bairro,
+			String logradouro, String numEndereco, String cep, String telefoneRestaurante, String senha, String tipo,
+			Fila[] capacidade) {
 		super();
 		this.idRestaurante = idRestaurante;
 		this.nome = nome;
 		this.cnpj = cnpj;
-		this.endereco = endereco;
+		this.cidade = cidade;
+		this.estado = estado;
+		this.bairro = bairro;
+		this.logradouro = logradouro;
+		this.numEndereco = numEndereco;
+		this.cep = cep;
 		this.telefoneRestaurante = telefoneRestaurante;
 		this.senha = senha;
 		this.tipo = tipo;
@@ -70,12 +80,52 @@ public class Restaurante {
 		this.cnpj = cnpj;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
+	public String getCidade() {
+		return cidade;
 	}
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
+	public String getNumEndereco() {
+		return numEndereco;
+	}
+
+	public void setNumEndereco(String numEndereco) {
+		this.numEndereco = numEndereco;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 	public String getTelefoneRestaurante() {
@@ -102,11 +152,11 @@ public class Restaurante {
 		this.tipo = tipo;
 	}
 
-	public Mesa[] getCapacidade() {
+	public Fila[] getCapacidade() {
 		return capacidade;
 	}
 
-	public void setCapacidade(Mesa[] capacidade) {
+	public void setCapacidade(Fila[] capacidade) {
 		this.capacidade = capacidade;
 	}
 
