@@ -17,5 +17,9 @@ public class RestauranteService {
 	public List<Restaurante> findByType(String type) {
 		return restauranteRepository.findByTipo(type);
 	}
+	
+	public List<Restaurante> findByAll() {
+		return restauranteRepository.findAll();
+	}
 
 }
