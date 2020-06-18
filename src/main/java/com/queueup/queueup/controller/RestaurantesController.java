@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.queueup.queueup.dao.RestauranteRepository;
 import com.queueup.queueup.model.Restaurante;
+import com.queueup.queueup.service.RestauranteService;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -27,6 +28,7 @@ import com.queueup.queueup.model.Restaurante;
 public class RestaurantesController {
 
 	private RestauranteRepository todosRestaurantes;
+	private RestauranteService restauranteService;
 
 	@Autowired
 	public RestaurantesController(RestauranteRepository todosRestaurantes) {
@@ -34,6 +36,7 @@ public class RestaurantesController {
 	}
 
 	private List<Restaurante> restaurantes;
+	private List<Restaurante> tipoRestaurante;
 
 	@CrossOrigin
 	@PostMapping("/criar")
@@ -75,4 +78,13 @@ public class RestaurantesController {
 		}
 	}
 
+	@GetMapping("/especialidades/{tipoDoRestaurante}")
+	public ResponseEntity<List<Restaurante>> obterPorTipo(@PathVariable("tipoDoRestaurante") String tipo) {
+		List<Restaurante> tiposEncontrados = restauranteService.findByType();	
+		if (tiposEncontrados.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		} else {
+			return ResponseEntity.status(HttpStatus.OK).body(tiposEncontrados);
+		}
+	}
 }
