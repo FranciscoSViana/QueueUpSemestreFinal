@@ -14,8 +14,8 @@ public class RestauranteService {
 	@Autowired
 	private RestauranteRepository restauranteRepository;
 	
-	public List<Restaurante> findByType() {
-		return restauranteRepository.findAll();
+	public List<Restaurante> findByType(String type) {
+		return restauranteRepository.findByTipo(type);
 	}
 
 }

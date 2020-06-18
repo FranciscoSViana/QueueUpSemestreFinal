@@ -84,7 +84,7 @@ public class RestaurantesController {
 	public ResponseEntity<List<Restaurante>> obterPorTipo(@PathVariable("tipoDoRestaurante") String tipo) {
 //		List<Restaurante> tiposEncontrados = restauranteService.findByType();
 //		System.out.println(tiposEncontrados);
-		return new ResponseEntity<>(restauranteService.findByType(), HttpStatus.OK);
+		return new ResponseEntity<>(restauranteService.findByType(tipo), HttpStatus.OK);
 //		if (tiposEncontrados.isEmpty()) {
 //			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 //		} else {
