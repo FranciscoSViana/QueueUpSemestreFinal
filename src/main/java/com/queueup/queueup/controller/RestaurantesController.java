@@ -28,6 +28,8 @@ import com.queueup.queueup.service.RestauranteService;
 public class RestaurantesController {
 
 	private RestauranteRepository todosRestaurantes;
+	
+	@Autowired
 	private RestauranteService restauranteService;
 
 	@Autowired
@@ -80,11 +82,13 @@ public class RestaurantesController {
 
 	@GetMapping("/especialidades/{tipoDoRestaurante}")
 	public ResponseEntity<List<Restaurante>> obterPorTipo(@PathVariable("tipoDoRestaurante") String tipo) {
-		List<Restaurante> tiposEncontrados = restauranteService.findByType();	
-		if (tiposEncontrados.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-		} else {
-			return ResponseEntity.status(HttpStatus.OK).body(tiposEncontrados);
-		}
+//		List<Restaurante> tiposEncontrados = restauranteService.findByType();
+//		System.out.println(tiposEncontrados);
+		return new ResponseEntity<>(restauranteService.findByType(), HttpStatus.OK);
+//		if (tiposEncontrados.isEmpty()) {
+//			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+//		} else {
+//			return ResponseEntity.status(HttpStatus.OK).body(tiposEncontrados);
+//		}
 	}
 }
