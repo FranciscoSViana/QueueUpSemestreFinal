@@ -80,6 +80,11 @@ public class RestaurantesController {
 		}
 	}
 
+	@GetMapping("/especialidades")
+	public ResponseEntity<List<Restaurante>> obterTodosTipos(){
+		return new ResponseEntity<>(restauranteService.findByAll(), HttpStatus.OK);
+	}
+	
 	@GetMapping("/especialidades/{tipoDoRestaurante}")
 	public ResponseEntity<List<Restaurante>> obterPorTipo(@PathVariable("tipoDoRestaurante") String tipo) {
 //		List<Restaurante> tiposEncontrados = restauranteService.findByType();
