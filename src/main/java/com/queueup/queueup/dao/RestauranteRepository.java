@@ -19,7 +19,7 @@ public interface RestauranteRepository extends JpaRepository<Restaurante, UUID> 
 	
 	public List<Restaurante> findByTipo(String tipo);
 	
-	public List<Restaurante> findByNome(String nome);
+	public List<Restaurante> findAll();
 
 	//public Restaurante findByNome(String nome);
 

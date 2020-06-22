@@ -18,12 +18,10 @@ public class RestauranteService {
 		return restauranteRepository.findByTipo(type);
 	}
 	
-	public List<Restaurante> findByAll() {
-		return restauranteRepository.findAll();
-	}
 	
-	public List<Restaurante> findByName(String nome){
-		return restauranteRepository.findByNome(nome);
-	}
+//	
+//	public List<Restaurante> findByName(String nome){
+//	return restauranteRepository.findByNome(nome);
+//	}
 
 }

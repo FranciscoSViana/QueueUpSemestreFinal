@@ -21,17 +21,22 @@ import org.springframework.web.bind.annotation.RestController;
 import com.queueup.queueup.dao.RestauranteRepository;
 import com.queueup.queueup.model.Restaurante;
 import com.queueup.queueup.service.RestauranteService;
+import com.queueup.queueup.service.ServiceGeral;
 
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/restaurantes")
 public class RestaurantesController {
 
+	@Autowired
 	private RestauranteRepository todosRestaurantes;
 	
 	@Autowired
 	private RestauranteService restauranteService;
 
+	@Autowired
+	private ServiceGeral serviceGeral;
+	
 	@Autowired
 	public RestaurantesController(RestauranteRepository todosRestaurantes) {
 		this.todosRestaurantes = todosRestaurantes;
@@ -65,13 +70,13 @@ public class RestaurantesController {
 		}
 	}
 
-	@GetMapping("/nome/{nomeDoRestaurante}")
-	public ResponseEntity<List<Restaurante>> obterPorNome(@PathVariable("nomeDoRestaurante") String nome) {
-		return new ResponseEntity<>(restauranteService.findByName(nome), HttpStatus.OK);
-//		List<Restaurante> restaurantesEncontrados = new ArrayList<Restaurante>();
-//		for (Restaurante r : restaurantes) {
-//			if (r.getNome().equals(nome)) {
-//				restaurantesEncontrados.add(r);
+//	@GetMapping("/nome/{nomeDoRestaurante}")
+//	public ResponseEntity<List<Restaurante>> obterPorNome(@PathVariable("nomeDoRestaurante") String nome) {
+//		return new ResponseEntity<>(restauranteService.findByName(nome), HttpStatus.OK);
+////		List<Restaurante> restaurantesEncontrados = new ArrayList<Restaurante>();
+////		for (Restaurante r : restaurantes) {
+////			if (r.getNome().equals(nome)) {
+////				restaurantesEncontrados.add(r);
 //			}
 //		}
 //		if (restaurantesEncontrados.isEmpty()) {
@@ -79,11 +84,11 @@ public class RestaurantesController {
 //		} else {
 //			return ResponseEntity.status(HttpStatus.OK).body(restaurantesEncontrados);
 //		}
-	}
+	//}
 
 	@GetMapping("/especialidades")
 	public ResponseEntity<List<Restaurante>> obterTodosTipos(){
-		return new ResponseEntity<>(restauranteService.findByAll(), HttpStatus.OK);
+		return new ResponseEntity<>(serviceGeral.findByAll(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/especialidades/{tipoDoRestaurante}")

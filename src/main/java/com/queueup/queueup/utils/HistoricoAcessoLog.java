@@ -27,8 +27,8 @@ public class HistoricoAcessoLog {
 
 	public void dataHora(String nomeUsuario) {
 		acesso[0][0] = nomeUsuario;
-		acesso[0][1] = serviceGeral.getDate();
-		acesso[0][2] = serviceGeral.getHour();
+	//	acesso[0][1] = serviceGeral.getDate();
+		//acesso[0][2] = serviceGeral.getHour();
 		new HistoricoAcessoLog().escreverLog(acesso);
 
 	}

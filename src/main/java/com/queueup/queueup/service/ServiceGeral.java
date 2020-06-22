@@ -2,26 +2,21 @@ package com.queueup.queueup.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.queueup.queueup.dao.RestauranteRepository;
+import com.queueup.queueup.model.Restaurante;
 
 @Service
 public class ServiceGeral {
 
-	private Date dataHoraAtual = new Date();
-	private String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
-	private String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
+	@Autowired
+	private RestauranteRepository restauranteRepository;
 	
-	
-	public String getDateHour() {
-		return data + " " + hora;
-	}
-	
-	public String getDate() {
-		return data;
-	}
-	
-	public String getHour() {
-		return hora;
+	public List<Restaurante> findByAll() {
+		return restauranteRepository.findAll();
 	}
 }
