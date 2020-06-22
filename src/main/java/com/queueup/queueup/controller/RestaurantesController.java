@@ -66,18 +66,19 @@ public class RestaurantesController {
 	}
 
 	@GetMapping("/nome/{nomeDoRestaurante}")
-	public ResponseEntity<List<Restaurante>> obterPorNome1(@PathVariable("nomeDoRestaurante") String nome) {
-		List<Restaurante> restaurantesEncontrados = new ArrayList<Restaurante>();
-		for (Restaurante r : restaurantes) {
-			if (r.getNome().equals(nome)) {
-				restaurantesEncontrados.add(r);
-			}
-		}
-		if (restaurantesEncontrados.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-		} else {
-			return ResponseEntity.status(HttpStatus.OK).body(restaurantesEncontrados);
-		}
+	public ResponseEntity<List<Restaurante>> obterPorNome(@PathVariable("nomeDoRestaurante") String nome) {
+		return new ResponseEntity<>(restauranteService.findByName(nome), HttpStatus.OK);
+//		List<Restaurante> restaurantesEncontrados = new ArrayList<Restaurante>();
+//		for (Restaurante r : restaurantes) {
+//			if (r.getNome().equals(nome)) {
+//				restaurantesEncontrados.add(r);
+//			}
+//		}
+//		if (restaurantesEncontrados.isEmpty()) {
+//			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+//		} else {
+//			return ResponseEntity.status(HttpStatus.OK).body(restaurantesEncontrados);
+//		}
 	}
 
 	@GetMapping("/especialidades")

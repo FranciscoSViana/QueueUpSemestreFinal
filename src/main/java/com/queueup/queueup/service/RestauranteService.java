@@ -21,5 +21,9 @@ public class RestauranteService {
 	public List<Restaurante> findByAll() {
 		return restauranteRepository.findAll();
 	}
+	
+	public List<Restaurante> findByName(String nome){
+		return restauranteRepository.findByNome(nome);
+	}
 
 }

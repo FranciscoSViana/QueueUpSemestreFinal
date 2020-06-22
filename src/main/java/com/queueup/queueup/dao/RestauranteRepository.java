@@ -18,6 +18,8 @@ public interface RestauranteRepository extends JpaRepository<Restaurante, UUID> 
 	public Restaurante loginRestaurante(@Param("cnpj") String cnpj, @Param("senha") String senha);
 	
 	public List<Restaurante> findByTipo(String tipo);
+	
+	public List<Restaurante> findByNome(String nome);
 
 	//public Restaurante findByNome(String nome);
 
