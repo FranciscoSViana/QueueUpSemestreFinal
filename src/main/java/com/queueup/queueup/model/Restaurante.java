@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.queueup.queueup.controller.Credenciais;
@@ -33,15 +34,20 @@ public class Restaurante {
 	private String imagem;
 	private String logo;
 	private Integer capacidade;
+	private Integer tamanhoFila = 0;
+	
+//	@OneToOne
+//	@JoinColumn(name = "idFila")
+//	private Fila fila;
 	// @JoinColumn // depois a gente ve isso
 	// private int idAvaliacao;
 
 	public Restaurante() {
-	}
+	}	
 	
 	public Restaurante(UUID idRestaurante, String nome, String cnpj, String cidade, String estado, String bairro,
 			String logradouro, String numEndereco, String cep, String telefoneRestaurante, String senha, String tipo,
-			String imagem, String logo, Integer capacidade) {
+			String imagem, String logo, Integer capacidade, Fila fila) {
 		super();
 		this.idRestaurante = idRestaurante;
 		this.nome = nome;
@@ -58,6 +64,15 @@ public class Restaurante {
 		this.imagem = imagem;
 		this.logo = logo;
 		this.capacidade = capacidade;
+	
+	}
+
+	public Integer getTamanhoFila() {
+		return tamanhoFila;
+	}
+
+	public void setTamanhoFila(Integer tamanhoFila) {
+		this.tamanhoFila = tamanhoFila;
 	}
 
 	public UUID getIdRestaurante() {
@@ -179,6 +194,8 @@ public class Restaurante {
 	public void setCapacidade(Integer capacidade) {
 		this.capacidade = capacidade;
 	}
+
+
 
 	// Métodos
 	public void cadastroMesa(int qtdLugares) {

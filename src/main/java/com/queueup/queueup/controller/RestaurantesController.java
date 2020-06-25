@@ -19,9 +19,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.queueup.queueup.dao.RestauranteRepository;
+import com.queueup.queueup.model.Fila;
 import com.queueup.queueup.model.Restaurante;
+import com.queueup.queueup.service.FilaService;
 import com.queueup.queueup.service.RestauranteService;
 import com.queueup.queueup.service.ServiceGeral;
+import com.queueup.queueup.utils.FilaCliente;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -44,6 +47,7 @@ public class RestaurantesController {
 
 	private List<Restaurante> restaurantes;
 	private List<Restaurante> tipoRestaurante;
+	
 
 	@CrossOrigin
 	@PostMapping("/criar")
@@ -102,4 +106,6 @@ public class RestaurantesController {
 //			return ResponseEntity.status(HttpStatus.OK).body(tiposEncontrados);
 //		}
 	}
+
+
 }

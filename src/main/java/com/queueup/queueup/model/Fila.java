@@ -2,6 +2,7 @@ package com.queueup.queueup.model;
 
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,29 +14,24 @@ public class Fila {
 
 	@Id
 	@GeneratedValue
-	private UUID idFila;
+	//private Long idFila;
 	
+	@Column
 	private int idCliente;
+	
 	private int idRestaurante;
-	private String qrCode;
-
+	
+	private int posicao;
+	
+	//public static int tamanhoFila =0;
+	
 	public Fila() {
 	}
 
-	public Fila(UUID idFila, int idCliente, int idRestaurante, String qrCode) {
-		super();
-		this.idFila = idFila;
+	public Fila(int idCliente, int idRestaurante, int posicao) {
 		this.idCliente = idCliente;
 		this.idRestaurante = idRestaurante;
-		this.qrCode = qrCode;
-	}
-
-	public UUID getIdFila() {
-		return idFila;
-	}
-
-	public void setIdFila(UUID idFila) {
-		this.idFila = idFila;
+		this.posicao = posicao;
 	}
 
 	public int getIdCliente() {
@@ -54,14 +50,19 @@ public class Fila {
 		this.idRestaurante = idRestaurante;
 	}
 
-	public String getQrCode() {
-		return qrCode;
+	public int getPosicao() {
+		return posicao;
 	}
 
-	public void setQrCode(String qrCode) {
-		this.qrCode = qrCode;
+	public void setPosicao(int posicao) {
+		this.posicao = posicao;
 	}
 
+
+	
+	
+
+	
 	
 
 }
