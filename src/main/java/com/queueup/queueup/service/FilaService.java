@@ -2,6 +2,7 @@ package com.queueup.queueup.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class FilaService {
 		if (filaList.size() > 0) {
 			int count = 1;
 			for (FilaCliente filaCliente : filaList) {
-				if (filaCliente.getIdRestaurante() == fila.getIdRestaurante())
+				if (filaCliente.getIdRestaurante().contentEquals(fila.getIdRestaurante()))
 					count++;
 			}
 			fila.setPosicao(count);
@@ -29,20 +30,20 @@ public class FilaService {
 		}
 	}
 
-	public Integer posicaoFila(int restaurante, int cliente) {
+	public Integer posicaoFila(String restaurante, String cliente) {
 		for (FilaCliente fila : filaList) {
-			if (fila.getIdRestaurante() == restaurante && fila.getIdCliente() == cliente) {
+			if (fila.getIdRestaurante().contentEquals(restaurante) && fila.getIdCliente().contentEquals(cliente)) {
 				return fila.getPosicao();
 			}
 		}
 		return 0;
 	}
 
-	public void removefila(int restaurante) {
+	public void removefila(String restaurante) {
 		int index = 0;
 		int count = 0;
 		for (FilaCliente fila : filaList) {
-			if (fila.getIdRestaurante() == restaurante && fila.getPosicao() == 1)
+			if (fila.getIdRestaurante().contentEquals(restaurante) && fila.getPosicao() == 1)
 				index = count;
 			count++;
 		}
@@ -50,18 +51,18 @@ public class FilaService {
 		remanejar(restaurante);
 	}
 
-	public void remanejar(int restaurante) {
+	public void remanejar(String restaurante) {
 		for (FilaCliente fila : filaList) {
-			if (fila.getIdRestaurante() == restaurante) {
+			if (fila.getIdRestaurante().contentEquals(restaurante)) {
 				fila.setPosicao(fila.getPosicao() - 1);
 			}
 		}
 	}
 	
-	public List<FilaCliente> getAll(int restaurante){
+	public List<FilaCliente> getAll(String restaurante){
 		List<FilaCliente> filaRestaurante = new ArrayList<FilaCliente>();
 		for (FilaCliente fila : filaList) {
-			if(fila.getIdRestaurante() == restaurante) {
+			if(fila.getIdRestaurante().contentEquals(restaurante)) {
 				filaRestaurante.add(fila);
 			}
 		}

@@ -1,37 +1,38 @@
 package com.queueup.queueup.utils;
 
+import java.util.UUID;
 
 public class FilaCliente {
-	private int idCliente;
-	private Long idRestaurante;
+	private String idCliente;
+	private String idRestaurante;
 	private int posicao;
 	
 	public FilaCliente() {
 	}
 	
-	public FilaCliente(int idCliente, Long idRestaurante, int posicao) {
+	public FilaCliente(String idCliente, String idRestaurante, int posicao) {
 		this.idCliente = idCliente;
 		this.idRestaurante = idRestaurante;
 		this.posicao = posicao;
 	}
 
 
-	public int getIdCliente() {
+	public String getIdCliente() {
 		return idCliente;
 	}
 
 
-	public void setIdCliente(int idCliente) {
+	public void setIdCliente(String idCliente) {
 		this.idCliente = idCliente;
 	}
 
 
-	public Long getIdRestaurante() {
+	public String getIdRestaurante() {
 		return idRestaurante;
 	}
 
 
-	public void setIdRestaurante(Long idRestaurante) {
+	public void setIdRestaurante(String idRestaurante) {
 		this.idRestaurante = idRestaurante;
 	}
 
