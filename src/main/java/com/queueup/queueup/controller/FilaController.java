@@ -45,7 +45,7 @@ public class FilaController {
 	@GetMapping("/posicao/{restaurante}/{cliente}")
 	public ResponseEntity<Integer> atualizaPosicao(@PathVariable("restaurante") String restaurante,
 			@PathVariable("cliente") String cliente) {
-		int posicao = service.posicaoFila(restaurante, cliente);
+		int posicao = service.posicaoFila(restaurante, cliente) + 1;
 		return ResponseEntity.ok(posicao);
 	}
 	
